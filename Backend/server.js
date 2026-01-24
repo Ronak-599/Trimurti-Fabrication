@@ -21,14 +21,20 @@ connectDB();
 // Middleware
 // Allow cross-origin image embedding from the dev server and disable restrictive CORP default
 app.use(helmet({ crossOriginResourcePolicy: { policy: 'cross-origin' } }));
-const allowedOrigins = [
-  'http://localhost:3000',
-  'http://127.0.0.1:3000',
-  'http://localhost:5173',
-  'http://127.0.0.1:5173',
-  'https://trimurti-fabrication.onrender.com'
-];
-app.use(cors({ origin: allowedOrigins, credentials: true }));
+
+app.use(
+  cors({
+    origin: [
+      "http://localhost:3000",
+      "http://localhost:5173",
+      "https://trimurti-fabrication.vercel.app",
+      "https://trimurti-fabrication-n2gwuh707-ronakpawar488-1739s-projects.vercel.app"
+    ],
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true
+  })
+);
+
 app.use(morgan('dev')); // Log requests in dev
 app.use(express.json({ limit: '10mb' })); // Parse JSON bodies
 // Serve uploaded images when using local disk storage
