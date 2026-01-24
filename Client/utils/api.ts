@@ -4,6 +4,13 @@
  * Uses a relative base so Vite dev server can proxy to the backend.
  */
 export const API_BASE_URL = '/api';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
+export const fetchGallery = async () => {
+  const res = await fetch(`${API_BASE_URL}/api/gallery`);
+  if (!res.ok) throw new Error("Failed to load gallery");
+  return res.json();
+};
 
 export interface GalleryItem {
   id: string;
