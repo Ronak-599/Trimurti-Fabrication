@@ -1,0 +1,122 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "gallery": "Gallery",
+    "contact": "Contact",
+    "login": "Login",
+    "logout": "Logout"
+  },
+  "brand": {
+    "name": "Trimurti Fabricators",
+    "alt": "Trimurti Fabricators Logo"
+  },
+  "lang": {
+    "en": "English",
+    "mr": "मराठी",
+    "hi": "हिंदी"
+  },
+  "hero": {
+    "tagline": "Market Leaders in Metal Fabrication",
+    "title1": "Trimurti",
+    "title2": "Fabricators & Engineering",
+    "description": "We provide strong, durable and reliable fabrication solutions for residential and commercial needs.",
+    "ctaServices": "Our Services",
+    "ctaContact": "Contact"
+  },
+  "features": {
+    "f1": {
+      "title": "Strong and Quality Work",
+      "desc": "We deliver robust ironworks like grills, gates, and sheds with durable build quality you can trust."
+    },
+    "f2": {
+      "title": "Experienced Craftsmanship",
+      "desc": "Skilled craftsmen with years of experience deliver precise measurements and perfect finishing."
+    },
+    "f3": {
+      "title": "On-time and Reliable Service",
+      "desc": "We complete projects on schedule with customer satisfaction as our primary goal."
+    }
+  },
+  "stats": {
+    "yearsExperience": "Years Experience",
+    "clientsWorldwide": "Clients Worldwide",
+    "projectsCompleted": "Projects Completed",
+    "toleranceLevel": "Tolerance Level"
+  },
+  "footer": {
+    "quickLinks": "Quick Links",
+    "aboutShop": "About Our Shop",
+    "getQuote": "Contact",
+    "contactInfo": "Contact Info",
+    "copyright": "Trimurti Fabrication Inc. All Rights Reserved. ISO 9001:2015 Certified.",
+    "description": "We deliver grills, gates, sheds, railings, and custom fabrication with strong construction and precise finishing. Reliable service for residential, commercial, and industrial projects.",
+    "address": {
+      "line1": "Navipeth, Panyachi Taki Road",
+      "line2": "Chhatrapati Nagar, Rahuri, Dist. Ahmednagar"
+    }
+  },
+  "services": {
+    "header": {
+      "title": "Our Services",
+      "subtitle": "World-class manufacturing solutions tailored to your specifications."
+    },
+    "items": {
+      "0": { "title": "Grill Fabrication", "desc": "Strong, safe, and attractive iron grills for homes, shops, and compounds." },
+      "1": { "title": "Gate Fabrication", "desc": "Main gates, sliding gates, and iron doors built with precise measurements and durable construction." },
+      "2": { "title": "Shed Fabrication", "desc": "Robust iron sheds for industrial, commercial, and household use." },
+      "3": { "title": "Railing & Staircase", "desc": "Safe and beautiful railings for stairs, balconies, and terraces." },
+      "4": { "title": "Custom Fabrication", "desc": "All kinds of custom iron fabrication tailored to customer needs." },
+      "5": { "title": "Building Work", "desc": "Reliable building work and structural fabrication solutions." }
+    },
+    "requestDetails": "Request Details",
+    "reviews": {
+      "title": "Reviews & Ratings",
+      "avgLabel": "Average rating:",
+      "noRatings": "No ratings yet",
+      "submit": "Submit Review",
+      "loading": "Loading reviews..."
+    },
+    "cta": {
+      "title": "Have a Unique Requirement?",
+      "subtitle": "We thrive on complex engineering challenges. Contact our technical team today to discuss your custom project."
+    }
+  },
+  "gallery": {
+    "header": {
+      "title": "Gallery",
+      "subtitle": "Explore our recent projects and designs."
+    },
+    "failedLoad": "Failed to load images.",
+    "serviceLabel": "Service:",
+    "optionsLabel": "Options",
+    "form": {
+      "title": "Title",
+      "description": "Description (optional)",
+      "selectService": "Select Service (optional)",
+      "optionsMarkdown": "Options (Markdown)",
+      "displayOrder": "Display Order (optional)",
+      "upload": "Upload"
+    }
+  },
+  "contact": {
+    "headerTitle": "Contact Us",
+    "headerSubtitle": "We respond within one business day.",
+    "companyInfo": "Company Information",
+    "address": "Address",
+    "phone": "Phone",
+    "email": "Email",
+    "workingHours": "Working Hours",
+    "hoursDetail": "Mon - Fri: 7:00 AM – 6:00 PM\nSat: 8:00 AM – 1:00 PM (By Appt)",
+    "whatsapp": "WhatsApp",
+    "downloadCard": "Download My Card",
+    "findWorkshop": "Find Our Workshop",
+    "viewOnMaps": "View on Google Maps"
+  },
+  "common": {
+    "delete": "Delete",
+    "contact": "Contact",
+    "loading": "Loading..."
+  }
+}

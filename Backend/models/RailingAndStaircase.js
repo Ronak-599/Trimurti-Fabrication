@@ -1,0 +1,14 @@
+const mongoose = require('mongoose');
+
+const fabricationSchema = new mongoose.Schema(
+  {
+    title: { type: String, required: true, trim: true },
+    imageUrl: { type: String, required: true, trim: true },
+    description: { type: String, default: '' },
+    order: { type: Number, default: null }
+  },
+  { timestamps: true }
+);
+
+// Explicitly set new collection name
+module.exports = mongoose.model('RailingAndStaircase', fabricationSchema, 'Railing');

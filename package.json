@@ -1,0 +1,32 @@
+{
+  "name": "forgecraft-fabrication-workshop",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "dev:client": "npm run dev --prefix Client",
+    "dev:backend": "npm run dev --prefix Backend",
+    "dev:all": "concurrently -n CLIENT,API -c blue,green \"npm run dev:client\" \"npm run dev:backend\"",
+    "start": "npm run dev:all"
+  },
+  "dependencies": {
+    "@google/genai": "^1.38.0",
+    "axios": "^1.13.2",
+    "i18next": "^25.8.0",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
+    "react-i18next": "^16.5.3",
+    "concurrently": "^9.0.0"
+  },
+  "devDependencies": {
+    "@types/axios": "^0.9.36",
+    "@types/node": "^22.14.0",
+    "@types/react": "^19.2.9",
+    "@vitejs/plugin-react": "^5.0.0",
+    "typescript": "~5.8.2",
+    "vite": "^6.2.0"
+  }
+}
