@@ -1,16 +1,10 @@
-
 /**
  * Shared API configuration for the MERN stack frontend.
- * Uses a relative base so Vite dev server can proxy to the backend.
+ * In dev, use relative `/api` so Vite proxies to localhost.
+ * In production (e.g., Vercel), set `VITE_API_BASE_URL` to your backend URL.
  */
-export const API_BASE_URL = '/api';
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
-
-export const fetchGallery = async () => {
-  const res = await fetch(`${API_BASE_URL}/api/gallery`);
-  if (!res.ok) throw new Error("Failed to load gallery");
-  return res.json();
-};
+export const API_BASE_URL =
+  import.meta.env.VITE_API_BASE_URL || '/api';
 
 export interface GalleryItem {
   id: string;
@@ -32,22 +26,6 @@ export interface ReviewItem {
   createdAt?: string;
 }
 
-export const submitContactForm = async (data: any) => {
-  const response = await fetch(`${API_BASE_URL}/contact`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(data),
-  });
-
-  if (!response.ok) {
-    throw new Error('Failed to submit message. Please try again later.');
-  }
-
-  return response.json();
-};
-
 // Fetch all gallery images from backend
 export const fetchGalleryImages = async (): Promise<GalleryItem[]> => {
   const response = await fetch(`${API_BASE_URL}/gallery`);
@@ -56,7 +34,6 @@ export const fetchGalleryImages = async (): Promise<GalleryItem[]> => {
   }
   const data = await response.json();
   const list = Array.isArray(data) ? data : (data.galleryImages ?? []);
-  // Normalize server payload to client shape
   return list.map((item: any) => ({
     id: item.id ?? item._id ?? String(item.imageUrl ?? Math.random()),
     url: item.url ?? item.imageUrl,
@@ -65,13 +42,19 @@ export const fetchGalleryImages = async (): Promise<GalleryItem[]> => {
     uploadedAt: item.createdAt ?? item.uploadedAt,
     service: item.service ?? '',
     optionsMarkdown: item.optionsMarkdown ?? '',
-    order: (typeof item.order === 'number') ? item.order : (item.order ? Number(item.order) : null),
+    order: typeof item.order === 'number'
+      ? item.order
+      : item.order
+      ? Number(item.order)
+      : null,
   }));
-}
+};
 
-// Fetch gallery images for a specific service/collection key
+// Fetch gallery images for a specific service
 export const fetchServiceGallery = async (key: string): Promise<GalleryItem[]> => {
-  const response = await fetch(`${API_BASE_URL}/gallery/service/${encodeURIComponent(key)}`);
+  const response = await fetch(
+    `${API_BASE_URL}/gallery/service/${encodeURIComponent(key)}`
+  );
   if (!response.ok) {
     throw new Error('Failed to fetch service gallery.');
   }
@@ -85,9 +68,13 @@ export const fetchServiceGallery = async (key: string): Promise<GalleryItem[]> =
     uploadedAt: item.createdAt ?? item.uploadedAt,
     service: item.service ?? '',
     optionsMarkdown: item.optionsMarkdown ?? '',
-    order: (typeof item.order === 'number') ? item.order : (item.order ? Number(item.order) : null),
+    order: typeof item.order === 'number'
+      ? item.order
+      : item.order
+      ? Number(item.order)
+      : null,
   }));
-}
+};
 
 // Fetch all reviews
 export const fetchReviews = async (): Promise<ReviewItem[]> => {
@@ -102,10 +89,14 @@ export const fetchReviews = async (): Promise<ReviewItem[]> => {
     comment: r.comment,
     createdAt: r.createdAt,
   }));
-}
+};
 
-// Submit a review (public)
-export const submitReview = async (name: string, rating: number, comment: string): Promise<void> => {
+// Submit a review
+export const submitReview = async (
+  name: string,
+  rating: number,
+  comment: string
+): Promise<void> => {
   const res = await fetch(`${API_BASE_URL}/reviews`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -115,30 +106,29 @@ export const submitReview = async (name: string, rating: number, comment: string
     const text = await res.text();
     throw new Error(text || 'Failed to submit review');
   }
-}
+};
 
-// Delete a review (admin only)
+// Delete a review (admin)
 export const deleteReview = async (id: string): Promise<void> => {
   const token = localStorage.getItem('adminToken');
   const res = await fetch(`${API_BASE_URL}/reviews/${id}`, {
     method: 'DELETE',
-    headers: token ? { 'Authorization': `Bearer ${token}` } : undefined,
+    headers: token ? { Authorization: `Bearer ${token}` } : undefined,
   });
   if (!res.ok) {
     const text = await res.text();
     throw new Error(text || 'Failed to delete review');
   }
-}
+};
 
-// Admin login API
-// Send email and password to POST /api/admin/login
-// Return JWT token
-export const adminLogin = async (email: string, password: string): Promise<string> => {
+// Admin login
+export const adminLogin = async (
+  email: string,
+  password: string
+): Promise<string> => {
   const response = await fetch(`${API_BASE_URL}/admin/login`, {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
+    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ email, password }),
   });
 
@@ -147,5 +137,5 @@ export const adminLogin = async (email: string, password: string): Promise<strin
   }
 
   const data = await response.json();
-  return data.token; // Assuming the token is returned in { token: '...' }
-}
+  return data.token;
+};
